@@ -8,12 +8,9 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
@@ -22,7 +19,7 @@ import java.util.Arrays;
 @Slf4j
 public class LogAop {
 
-    //切入点
+    // 切入点
     @Pointcut("execution(* com.*..controller..*(..))")
     public void doControllerAop() {
         System.out.println("这是一个AOP切面！");
@@ -40,7 +37,7 @@ public class LogAop {
 
 
         // 记录下请求内容
-        //打印空行方便阅读
+        // 打印空行方便阅读
         System.out.println();
         log.info("--------------->日志打印ing<------------- : ");
         log.info("---->请求URL : " + request.getRequestURL().toString());

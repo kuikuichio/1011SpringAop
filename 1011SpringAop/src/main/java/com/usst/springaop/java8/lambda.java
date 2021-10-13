@@ -30,7 +30,7 @@ public class lambda {
             }
         }
 
-        //filter用来做判断的,筛选记录功能。
+        // filter用来做判断的,筛选记录功能。
         long count = peoples.stream().filter(person -> {
             boolean b = person.getSalary() > 0f;
             // if (person.getSalary() > 0f) {
@@ -44,7 +44,7 @@ public class lambda {
         // System.out.println(count);
 
 
-        //map用来针对每个元素进行些修改(更新、添加)操作。可以在原数据直接修改，可以返回新的对象数据。
+        // map用来针对每个元素进行些修改(更新、添加)操作。可以在原数据直接修改，可以返回新的对象数据。
         // peoples.stream().map(person -> {
         // Person person1 = new Person();
         // person1.setSalary(person.getSalary() + 1000f);
@@ -58,7 +58,7 @@ public class lambda {
         // });
 
 
-        //map用来针对每个元素获取记录中的所需字段,构造成map形式。
+        // map用来针对每个元素获取记录中的所需字段,构造成map形式。
         peoples.stream().map(person -> {
             Map<String, String> map = new HashMap<>();
             map.put("username", person.getUsername());
@@ -71,14 +71,14 @@ public class lambda {
             });
         });
 
-        //map用来针对每个元素获取记录中的所需字段,构造成list形式。
-        //sort排序
+        // map用来针对每个元素获取记录中的所需字段,构造成list形式。
+        // sort排序
         peoples.stream().skip(2).limit(3).sorted(
                 Comparator.comparing(Person::getUsername)).collect(Collectors.toList()).forEach(e -> {
             // System.out.println(e);
         });
 
-        //sort排序 min max
+        // sort排序 min max
         peoples.forEach(e -> {
             System.out.println("person:" + e);
         });
@@ -101,7 +101,5 @@ public class lambda {
         System.out.println("---------------------reduce()--------------------");
         Float reduce = peoples.stream().map(Person::getSalary).reduce(1F, Float::sum);
         System.out.println(reduce);
-
-
     }
 }

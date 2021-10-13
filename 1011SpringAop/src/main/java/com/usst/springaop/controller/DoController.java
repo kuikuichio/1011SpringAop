@@ -20,7 +20,6 @@ public class DoController {
     @RequestMapping("/setUserName")
     public String setUserName(@RequestParam("username") String username,
                               @RequestParam("password")String password){
-    //username = USERNAME;
         doService.add(username,password);
         return "成功";
     }
