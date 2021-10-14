@@ -3,7 +3,7 @@ package com.usst.springaop.java8;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class lambda {
+public class lambdaDemo {
     public static void main(String[] args) {
         //Astream
         // List<String> strings = Arrays.asList("a", "b", "c");
@@ -18,15 +18,15 @@ public class lambda {
         //     System.out.println(e);
         // });
 
-        ArrayList<Person> peoples = new ArrayList<>();
+        ArrayList<PersonDemo> peoples = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             if (i % 2 != 0) {
                 {
-                    peoples.add(new Person(i + "lisi", "123456", "徐汇凌云路", "123@163.com", "123456", 1000f * i, 1));
+                    peoples.add(new PersonDemo(i + "lisi", "123456", "徐汇凌云路", "123@163.com", "123456", 1000f * i, 1));
                 }
             }
             if (i % 2 == 0) {
-                peoples.add(new Person(i + "zhangsan", "123456", "徐汇凌云路", "123@163.com", "123456", 1000f * i, 1));
+                peoples.add(new PersonDemo(i + "zhangsan", "123456", "徐汇凌云路", "123@163.com", "123456", 1000f * i, 1));
             }
         }
 
@@ -74,32 +74,34 @@ public class lambda {
         // map用来针对每个元素获取记录中的所需字段,构造成list形式。
         // sort排序
         peoples.stream().skip(2).limit(3).sorted(
-                Comparator.comparing(Person::getUsername)).collect(Collectors.toList()).forEach(e -> {
+                Comparator.comparing(PersonDemo::getUsername)).collect(Collectors.toList()).forEach(e -> {
             // System.out.println(e);
         });
 
-        // sort排序 min max
+        //sort排序 min max
         peoples.forEach(e -> {
             System.out.println("person:" + e);
         });
 
-        Optional<Person> min = peoples.stream().skip(2).sorted(
-                Comparator.comparing(Person::getUsername)).limit(3).min(Comparator.comparing(Person::getSalary));
+        Optional<PersonDemo> min = peoples.stream().skip(2).sorted(
+                Comparator.comparing(PersonDemo::getUsername)).limit(3).min(Comparator.comparing(PersonDemo::getSalary));
         System.out.println(min.get());
 
-        Optional<Person> max = peoples.stream().skip(2).sorted(
-                Comparator.comparing(Person::getUsername)).limit(3).max(Comparator.comparing(Person::getSalary));
+        Optional<PersonDemo> max = peoples.stream().skip(2).sorted(
+                Comparator.comparing(PersonDemo::getUsername)).limit(3).max(Comparator.comparing(PersonDemo::getSalary));
         System.out.println(max);
 
-        Person person = peoples.parallelStream().findFirst().get();
-        Optional<Person> any = peoples.parallelStream().findAny();
+        PersonDemo person = peoples.parallelStream().findFirst().get();
+        Optional<PersonDemo> any = peoples.parallelStream().findAny();
 
         System.out.println("-------------findFirst()----findAny()------------");
         System.out.println("parallelStream--optional::{}" + person);
         System.out.println("parallelStream--optional::{}" + any);
 
         System.out.println("---------------------reduce()--------------------");
-        Float reduce = peoples.stream().map(Person::getSalary).reduce(1F, Float::sum);
+        Float reduce = peoples.stream().map(PersonDemo::getSalary).reduce(1F, Float::sum);
         System.out.println(reduce);
+
+
     }
 }

@@ -1,5 +1,7 @@
 package com.usst.springaop.reflect;
 
+import java.util.Optional;
+
 public class Person {
     private String username;
     private String password;
@@ -49,5 +51,10 @@ public class Person {
 
     public void  getemail(){
         System.out.println("----xuhuixuhui----");
+    }
+
+    public Optional<String> getValue(){
+        Optional<String> optional = Optional.of(String.valueOf(age));
+        return optional;
     }
 }

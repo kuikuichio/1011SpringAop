@@ -1,6 +1,6 @@
 package com.usst.springaop.java8;
 
-public class Person {
+public class PersonDemo {
     private String username;
     private String password;
     private String address;
@@ -9,10 +9,10 @@ public class Person {
     private Float salary;
     private Integer sex;
 
-    public Person() {
+    public PersonDemo() {
     }
 
-    public Person(String username, String password, String address, String email, String phone, Float salary, Integer sex) {
+    public PersonDemo(String username, String password, String address, String email, String phone, Float salary, Integer sex) {
         this.username = username;
         this.password = password;
         this.address = address;
